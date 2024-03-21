@@ -35,6 +35,7 @@ model Token {
   //
   token     String   @unique
   //
+  userAgent String   @map("user_agent")
   userId    String   @map("user_id")
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   //

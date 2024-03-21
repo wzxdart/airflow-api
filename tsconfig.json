@@ -17,7 +17,6 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    //
     "paths": {
       "@prisma": ["./src/prisma"],
       "@prisma/*": ["./src/prisma/*"],
@@ -25,11 +24,17 @@
       "@user": ["./src/user"],
       "@user/*": ["./src/user/*"],
       //
+      "@auth": ["./src/auth"],
+      "@auth/*": ["./src/auth/*"],
+      //
       "@post": ["./src/post"],
       "@post/*": ["./src/post/*"],
       //
       "@category": ["./src/category"],
-      "@category/*": ["./src/category/*"]
+      "@category/*": ["./src/category/*"],
+      //
+      "@common": ["libs/common/src"],
+      "@common/*": ["libs/common/src/*"]
     }
   }
 }
