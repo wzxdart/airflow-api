@@ -33,6 +33,15 @@
       "@category": ["./src/category"],
       "@category/*": ["./src/category/*"],
       //
+      "@athlete": ["./src/athlete"],
+      "@athlete/*": ["./src/athlete/*"],
+      //
+      "@trainer": ["./src/trainer"],
+      "@trainer/*": ["./src/trainer/*"],
+      //
+      "@subject": ["./src/subject"],
+      "@subject/*": ["./src/subject/*"],
+      //
       "@common": ["libs/common/src"],
       "@common/*": ["libs/common/src/*"]
     }

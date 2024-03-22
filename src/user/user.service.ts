@@ -1,6 +1,12 @@
-import { Injectable } from "@nestjs/common";
-import { User } from "@prisma/client";
+import { JwtPayload } from "@common/interfaces/jwt";
+import {
+  ConflictException,
+  ForbiddenException,
+  Injectable,
+} from "@nestjs/common";
+import { Role, User } from "@prisma/client";
 import { PrismaService } from "@prisma/prisma.service";
+import { UpdateUserDto } from "@user/dtos";
 import { hashSync } from "bcryptjs";
 
 @Injectable()
@@ -14,6 +20,7 @@ export class UserService {
       data: {
         firstName: user.firstName,
         lastName: user.lastName,
+        roles: [Role.USER],
         email: user.email,
         password: hashedPassword,
       },
@@ -32,9 +39,27 @@ export class UserService {
     });
   }
 
-  delete(id: string) {
+  delete(id: string, existUser: JwtPayload) {
+    if (existUser.id !== id && existUser.roles.includes(Role.USER))
+      throw new ForbiddenException();
+
     return this._prismaService.user.delete({
       where: { id: id },
+    });
+  }
+
+  update(email: string, dto: UpdateUserDto) {
+    const user = this.getByEmail(email);
+
+    if (!user) throw new ConflictException(`user don't exist with ${email}`);
+
+    return this._prismaService.user.update({
+      where: { email: email },
+      data: {
+        firstName: dto.firstName,
+        lastName: dto.lastName,
+        roles: [...dto.roles],
+      },
     });
   }
 

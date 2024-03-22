@@ -11,11 +11,11 @@ export class SignInDto {
   @IsEmail()
   @MinLength(4)
   @MaxLength(254)
-  readonly email: string;
+  email: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(6)
   @MaxLength(254)
-  readonly password: string;
+  password: string;
 }

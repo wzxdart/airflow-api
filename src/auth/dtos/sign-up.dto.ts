@@ -13,30 +13,30 @@ export class SignUpDto {
   @IsNotEmpty()
   @MinLength(3)
   @MaxLength(254)
-  readonly firstName: string;
+  firstName: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(3)
   @MaxLength(254)
-  readonly lastName: string;
+  lastName: string;
 
   @IsString()
   @IsEmail()
   @MinLength(4)
   @MaxLength(254)
-  readonly email: string;
+  email: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(6)
   @MaxLength(254)
-  readonly password: string;
+  password: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(6)
   @MaxLength(254)
   @Validate(IsPasswordConfirmConstraint)
-  readonly passwordConfirm: string;
+  passwordConfirm: string;
 }

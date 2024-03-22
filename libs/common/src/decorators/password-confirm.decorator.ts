@@ -1,4 +1,4 @@
-import { SignUpDto } from "@auth/dto";
+import { SignUpDto } from "@auth/dtos";
 import {
   ValidationArguments,
   ValidatorConstraint,
