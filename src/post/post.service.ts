@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
+import { CreatePostDto, UpdatePostDto } from "@post/dtos";
 import { PrismaService } from "@prisma/prisma.service";
-
-import { CreatePostDto, UpdatePostDto } from "./dtos";
 
 @Injectable()
 export class PostService {
@@ -19,7 +18,7 @@ export class PostService {
     return this._prismaService.post.findMany();
   }
 
-  getPostById(id: string) {
+  getById(id: string) {
     return this._prismaService.post.findUnique({
       where: { id: id },
     });

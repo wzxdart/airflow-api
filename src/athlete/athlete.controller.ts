@@ -32,7 +32,7 @@ export class AthleteController {
 
   @Get("/id/:id")
   async getAthleteById(@Param("id") id: string) {
-    return await this._athleteService.getAthleteById(id);
+    return await this._athleteService.getById(id);
   }
 
   @UseGuards(RolesGuard)

@@ -18,7 +18,7 @@ export class SubjectService {
     return this._prismaService.subject.findMany();
   }
 
-  getSubjectById(id: string) {
+  getById(id: string) {
     return this._prismaService.subject.findUnique({
       where: { id: id },
     });

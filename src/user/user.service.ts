@@ -6,22 +6,20 @@ import {
 } from "@nestjs/common";
 import { Role, User } from "@prisma/client";
 import { PrismaService } from "@prisma/prisma.service";
-import { UpdateUserDto } from "@user/dtos";
+import { CreateUserDto, UpdateUserDto } from "@user/dtos";
 import { hashSync } from "bcryptjs";
 
 @Injectable()
 export class UserService {
   constructor(private readonly _prismaService: PrismaService) {}
 
-  create(user: Partial<User>) {
-    const hashedPassword = this.hash(user.password);
+  create(dto: CreateUserDto) {
+    const hashedPassword = this.hash(dto.password);
 
     return this._prismaService.user.create({
       data: {
-        firstName: user.firstName,
-        lastName: user.lastName,
+        ...dto,
         roles: [Role.USER],
-        email: user.email,
         password: hashedPassword,
       },
     });

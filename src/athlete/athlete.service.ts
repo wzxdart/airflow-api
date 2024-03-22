@@ -1,7 +1,6 @@
+import { CreateAthleteDto, UpdateAthleteDto } from "@athlete/dtos";
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "@prisma/prisma.service";
-
-import { CreateAthleteDto, UpdateAthleteDto } from "./dtos";
 
 @Injectable()
 export class AthleteService {
@@ -19,7 +18,7 @@ export class AthleteService {
     return this._prismaService.athlete.findMany();
   }
 
-  getAthleteById(id: string) {
+  getById(id: string) {
     return this._prismaService.athlete.findUnique({
       where: { id: id },
     });

@@ -11,6 +11,6 @@ import { UserModule } from "@user/user.module";
 @Module({
   providers: [AuthService, ...strategies, ...guards],
   controllers: [AuthController],
-  imports: [PassportModule, JwtModule.registerAsync(options()), UserModule],
+  imports: [UserModule, PassportModule, JwtModule.registerAsync(options())],
 })
 export class AuthModule {}

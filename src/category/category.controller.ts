@@ -32,7 +32,7 @@ export class CategoryController {
 
   @Get("/id/:id")
   async getCategoryById(@Param("id") id: string) {
-    return await this._categoryService.getCategoryById(id);
+    return await this._categoryService.getById(id);
   }
 
   @UseGuards(RolesGuard)

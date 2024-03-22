@@ -19,7 +19,7 @@ export class TrainerService {
     return this._prismaService.trainer.findMany();
   }
 
-  getTrainerById(id: string) {
+  getById(id: string) {
     return this._prismaService.trainer.findUnique({
       where: { id: id },
     });

@@ -32,7 +32,7 @@ export class PostController {
 
   @Get("/id/:id")
   async getPostById(@Param("id") id: string) {
-    return await this._postService.getPostById(id);
+    return await this._postService.getById(id);
   }
 
   @UseGuards(RolesGuard)

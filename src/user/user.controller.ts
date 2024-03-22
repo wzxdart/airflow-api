@@ -14,10 +14,9 @@ import {
   UseInterceptors,
 } from "@nestjs/common";
 import { Role } from "@prisma/client";
+import { UpdateUserDto } from "@user/dtos/update-user.dto";
+import { UserResponse } from "@user/responses";
 import { UserService } from "@user/user.service";
-
-import { UpdateUserDto } from "./dtos/update-user.dto";
-import { UserResponse } from "./responses";
 
 @Controller("user")
 export class UserController {

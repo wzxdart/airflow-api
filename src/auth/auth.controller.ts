@@ -16,13 +16,17 @@ import {
   UnauthorizedException,
   UseInterceptors,
 } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 import { UserResponse } from "@user/responses";
 import { Response } from "express";
 
 @Public()
 @Controller("auth")
 export class AuthController {
-  constructor(private readonly _authService: AuthService) {}
+  constructor(
+    private readonly _authService: AuthService,
+    private readonly _configService: ConfigService,
+  ) {}
 
   @Post("sign-in")
   async signIn(
@@ -102,7 +106,7 @@ export class AuthController {
       httpOnly: true,
       sameSite: "lax",
       expires: new Date(refreshToken.expiredAt),
-      secure: process.env.NODE_ENV === "prod",
+      secure: this._configService.get("NODE_ENV") === "production",
       path: "/",
     });
 

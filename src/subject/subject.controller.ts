@@ -32,7 +32,7 @@ export class SubjectController {
 
   @Get("/id/:id")
   async getSubjectById(@Param("id") id: string) {
-    return await this._subjectService.getSubjectById(id);
+    return await this._subjectService.getById(id);
   }
 
   @UseGuards(RolesGuard)

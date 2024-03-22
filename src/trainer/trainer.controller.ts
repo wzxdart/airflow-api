@@ -33,7 +33,7 @@ export class TrainerController {
 
   @Get("/id/:id")
   async getTrainerById(@Param("id") id: string) {
-    return await this._trainerService.getTrainerById(id);
+    return await this._trainerService.getById(id);
   }
 
   @UseGuards(RolesGuard)
