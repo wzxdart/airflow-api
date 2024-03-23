@@ -6,7 +6,7 @@ import { AppModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const config = new DocumentBuilder().setTitle("airflow-acrobatica").build();
+  const config = new DocumentBuilder().setTitle("airflow").build();
   const document = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup("api", app, document);
